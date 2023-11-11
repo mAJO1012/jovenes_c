@@ -1,5 +1,6 @@
 import { IconArrowLeft } from '@tabler/icons-react'
 import './ToDos.css'
+import { Link } from 'react-router-dom'
 
 export const icono = () => {
   return <IconArrowLeft />
@@ -8,6 +9,9 @@ export const icono = () => {
 export const ToDos = () => {
   return (
     <form>
+      <div>
+      <Link to='/todo'><IconArrowLeft color="black" size={46} /></Link>
+      </div>
       <div className='container'>
         <div className='form-info'>
           <div className='form-info-childs'>
