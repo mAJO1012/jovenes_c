@@ -1,4 +1,9 @@
+import { IconArrowLeft } from '@tabler/icons-react'
 import './ToDos.css'
+
+export const icono = () => {
+  return <IconArrowLeft />
+}
 
 export const ToDos = () => {
   return (
