@@ -1,5 +1,14 @@
+import { IconEdit, IconTrash } from '@tabler/icons-react'
 import './ToDo.css'
 import { Link } from 'react-router-dom'
+
+export const icono = () => {
+  return <IconEdit />
+}
+
+export const icono2 = () => {
+  return <IconTrash />
+}
 
 export const ToDo = () => {
   return (
@@ -18,6 +27,8 @@ export const ToDo = () => {
               <th>Descripción</th>
               <th>Fecha de finalización</th>
               <th>Estado</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -26,18 +37,24 @@ export const ToDo = () => {
               <td>Debo hacer...</td>
               <td>12-11</td>
               <td> <p className='status complete'>Completado</p></td>
+              <td><IconEdit color='black' size={36} /></td>
+              <td><IconTrash color='black' size={36} /></td>
             </tr>
             <tr>
               <td>Inglés</td>
               <td>Debo hacer...</td>
               <td>10-09</td>
               <td> <p className='status pending'>Pendiente</p></td>
+              <td><IconEdit color='black' size={36} /></td>
+              <td><IconTrash color='black' size={36} /></td>
             </tr>
             <tr>
               <td>Inglés</td>
               <td>Debo hacer...</td>
               <td>10-09</td>
               <td> <p className='status pending'>Pendiente</p></td>
+              <td><IconEdit color='black' size={36} /></td>
+              <td><IconTrash color='black' size={36} /></td>
             </tr>
           </tbody>
         </table>

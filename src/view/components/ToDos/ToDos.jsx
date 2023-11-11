@@ -10,7 +10,7 @@ export const ToDos = () => {
   return (
     <form>
       <div>
-      <Link to='/todo'><IconArrowLeft color="black" size={46} /></Link>
+        <Link to='/todo'><IconArrowLeft color='black' size={46} /></Link>
       </div>
       <div className='container'>
         <div className='form-info'>
