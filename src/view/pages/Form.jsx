@@ -1,20 +1,31 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import './Form.css'
+import { useState } from 'react'
 
 export function Form () {
-  const { handleSubmit, formState: { errors }, watch } = useForm()
+  const [values, setValues] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
 
-  console.log(errors)
+  });
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const handleForm = (event) => {
+    event.preventDefault()
+    console.log(values)
+  }
   return (
-
-    <form
-      class='form' onSubmit={handleSubmit((data) => {
-        console.log(data)
-      })}
-    >
-
+    <form  onSubmit={handleForm}>
       <div className='container-form'>
         <div className='information'>
           <div className='info-childs'>
@@ -30,16 +41,16 @@ export function Form () {
             </div>
 
             <div>
-              <input type='text' name='name' placeholder='Nombre' />
+              <input type='text' name='name' value={values.name} placeholder='Nombre' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='text' name='lastName' placeholder='Apellido' />
+              <input type='text' name='lastName' value={values.lastName} placeholder='Apellido' onChange={handleInputChange}/>
             </div>
             <div>
-              <input type='text' name='email' placeholder='Correo electrónico' />
+              <input type='text' name='email' value={values.email} placeholder='Correo electrónico' onChange={handleInputChange}/>
             </div>
             <div>
-              <input type='password' name='password' placeholder='Contraseña' />
+              <input type='password' name='password' value={values.password} placeholder='Contraseña' onChange={handleInputChange}/>
             </div>
 
             <div>
@@ -48,9 +59,6 @@ export function Form () {
           </div>
         </div>
       </div>
-      <pre>
-        {JSON.stringify(watch(), null, 2)}
-      </pre>
     </form>
 
   )
