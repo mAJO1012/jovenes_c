@@ -1,31 +1,30 @@
-import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import './Form.css'
 import { useState } from 'react'
 
 export function Form () {
   const [values, setValues] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
+    name: '',
+    lastName: '',
+    email: '',
+    password: ''
 
-  });
+  })
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setValues({
       ...values,
-      [name]: value,
-    });
-  };
+      [name]: value
+    })
+  }
 
   const handleForm = (event) => {
     event.preventDefault()
     console.log(values)
   }
   return (
-    <form  onSubmit={handleForm}>
+    <form onSubmit={handleForm}>
       <div className='container-form'>
         <div className='information'>
           <div className='info-childs'>
@@ -44,13 +43,13 @@ export function Form () {
               <input type='text' name='name' value={values.name} placeholder='Nombre' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='text' name='lastName' value={values.lastName} placeholder='Apellido' onChange={handleInputChange}/>
+              <input type='text' name='lastName' value={values.lastName} placeholder='Apellido' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='text' name='email' value={values.email} placeholder='Correo electrónico' onChange={handleInputChange}/>
+              <input type='text' name='email' value={values.email} placeholder='Correo electrónico' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='password' name='password' value={values.password} placeholder='Contraseña' onChange={handleInputChange}/>
+              <input type='password' name='password' value={values.password} placeholder='Contraseña' onChange={handleInputChange} />
             </div>
 
             <div>

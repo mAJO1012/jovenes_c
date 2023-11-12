@@ -24,7 +24,7 @@ export const ToDos = () => {
               <input type='text' id='n_task' name='n_task' placeholder='Nombre' />
             </div>
             <div>
-              <label htmlFor='desc'>Fecha de finalización</label>
+              <label htmlFor='desc'>Descripción</label>
               <input type='text' name='descript' id='desc' placeholder='Descripción' />
             </div>
             <div>
