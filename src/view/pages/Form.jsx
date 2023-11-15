@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 export function Form () {
   const [values, setValues] = useState({
-    name: '',
+    firstName: '',
     lastName: '',
     email: '',
     password: ''
@@ -22,6 +22,11 @@ export function Form () {
   const handleForm = (event) => {
     event.preventDefault()
     console.log(values)
+    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+    })
   }
   return (
     <form onSubmit={handleForm}>
@@ -40,16 +45,16 @@ export function Form () {
             </div>
 
             <div>
-              <input type='text' name='name' value={values.name} placeholder='Nombre' onChange={handleInputChange} />
+              <input type='text' name='firstName' defaultValue={values.firstName} placeholder='Nombre' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='text' name='lastName' value={values.lastName} placeholder='Apellido' onChange={handleInputChange} />
+              <input type='text' name='lastName' defaultValue={values.lastName} placeholder='Apellido' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='text' name='email' value={values.email} placeholder='Correo electrónico' onChange={handleInputChange} />
+              <input type='text' name='email' defaultValue={values.email} placeholder='Correo electrónico' onChange={handleInputChange} />
             </div>
             <div>
-              <input type='password' name='password' value={values.password} placeholder='Contraseña' onChange={handleInputChange} />
+              <input type='password' name='password' defaultValue={values.password} placeholder='Contraseña' onChange={handleInputChange} />
             </div>
 
             <div>

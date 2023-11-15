@@ -1,9 +1,36 @@
+import { useState } from 'react'
 import './Home.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Home = () => {
+  const [loginError, setLoginError] = useState(null)
+  const navigate = useNavigate()
+
+  const handleLogin = (event) => {
+    event.preventDefault()
+    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/user/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: event.target.elements.email.value,
+        password: event.target.elements.password.value
+      })
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error('Credenciales incorrectas')
+        }
+      })
+      .then((data) => {
+        navigate('/todo')
+      }).catch(error => {
+        setLoginError(error)
+      })
+  }
   return (
-    <form>
+    <form onSubmit={handleLogin}>
       <div className='container-form'>
         <div className='information'>
           <div className='info-childs'>
@@ -29,6 +56,9 @@ export const Home = () => {
             <div>
               <button type='submit' name='btn' id='btn_enviar'>Enviar</button>
             </div>
+            {loginError && (
+              <p className='error-message'>{loginError}</p>
+            )}
           </div>
         </div>
       </div>
