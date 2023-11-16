@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './Home.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { TaskContext } from '../components/context/tasks'
 
 export const Home = () => {
+  const { dispatch } = useContext(TaskContext)
   const [loginError, setLoginError] = useState(null)
   const navigate = useNavigate()
 
@@ -24,6 +26,7 @@ export const Home = () => {
         }
       })
       .then((data) => {
+        dispatch({ type: 'LOGIN_USER', payload: data.user })
         navigate('/todo')
       }).catch(error => {
         setLoginError(error)
@@ -46,11 +49,11 @@ export const Home = () => {
             </div>
 
             <div>
-              <input type='text' placeholder='Correo electrónico' />
+              <input name='email' type='text' placeholder='Correo electrónico' />
             </div>
 
             <div>
-              <input type='password' placeholder='Contraseña' />
+              <input name='password' type='password' placeholder='Contraseña' />
             </div>
 
             <div>
