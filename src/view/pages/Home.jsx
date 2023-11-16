@@ -1,11 +1,10 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import './Home.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { TaskContext } from '../components/context/tasks'
 
 export const Home = () => {
   const { dispatch } = useContext(TaskContext)
-  const [loginError, setLoginError] = useState(null)
   const navigate = useNavigate()
 
   const handleLogin = (event) => {
@@ -18,18 +17,9 @@ export const Home = () => {
         password: event.target.elements.password.value
       })
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error('Credenciales incorrectas')
-        }
-      })
       .then((data) => {
         dispatch({ type: 'LOGIN_USER', payload: data.user })
         navigate('/todo')
-      }).catch(error => {
-        setLoginError(error)
       })
   }
   return (
@@ -59,9 +49,6 @@ export const Home = () => {
             <div>
               <button type='submit' name='btn' id='btn_enviar'>Enviar</button>
             </div>
-            {loginError && (
-              <p className='error-message'>{loginError}</p>
-            )}
           </div>
         </div>
       </div>
