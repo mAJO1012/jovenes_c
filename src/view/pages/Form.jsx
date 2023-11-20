@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import './Form.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { TaskContext } from '../components/context/tasks'
 
 export function Form () {
+  const { dispatch } = useContext(TaskContext)
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -27,6 +29,9 @@ export function Form () {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
     })
+      .then((data) => {
+        dispatch({ type: 'SIGNUP_USER', payload: data.user })
+      })
   }
   return (
     <form onSubmit={handleForm}>

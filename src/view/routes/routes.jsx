@@ -2,9 +2,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Home } from '../pages/Home'
 import { Form } from '../pages/Form'
 import { Layout } from '../components/Layout/Layout'
+import { ToDoAdd } from '../pages/ToDoAdd/ToDoAdd'
 import { ToDo } from '../pages/ToDo/ToDo'
-import { ToDos } from '../pages/ToDos/ToDos'
-import { ProtectedRoute } from './ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +11,7 @@ export const router = createBrowserRouter([
     Component: Form
   },
   {
-    path: '/',
+    path: '',
     Component: Home
   },
   {
@@ -20,12 +19,12 @@ export const router = createBrowserRouter([
     Component: Layout,
     children: [
       {
-        path: '',
-        element:
-  <ProtectedRoute>
-    <ToDo />
-    <ToDos />
-  </ProtectedRoute>
+        path: 'toDoAdd',
+        Component: ToDoAdd
+      },
+      {
+        path: 'toDo',
+        Component: ToDo
       }
     ]
   }

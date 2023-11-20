@@ -1,12 +1,13 @@
 import { IconArrowLeft } from '@tabler/icons-react'
-import './ToDos.css'
+import './ToDoAdd.css'
 import { Link } from 'react-router-dom'
 
 export const icono = () => {
   return <IconArrowLeft />
 }
 
-export const ToDos = () => {
+export const ToDoAdd = () => {
+  /*  const { handleNewTodo } = useTodo() */
   return (
     <form>
       <div>
@@ -21,26 +22,19 @@ export const ToDos = () => {
 
             <div>
               <label htmlFor='d_e'>Nombre</label>
-              <input type='text' id='n_task' name='n_task' placeholder='Nombre' />
+              <input type='text' name='name' placeholder='Nombre' />
             </div>
             <div>
               <label htmlFor='desc'>Descripción</label>
-              <input type='text' name='descript' id='desc' placeholder='Descripción' />
+              <input type='text' name='description' placeholder='Descripción' />
             </div>
             <div>
               <label htmlFor='d_e'>Fecha de finalización</label>
-              <input type='date' name='date' id='d_e' placeholder='Fecha de finalización' />
-            </div>
-            <div>
-              <label htmlFor='state'>Estado</label>
-              <select name='state' id='state'>
-                <option value='1'>Completada</option>
-                <option value='2'>Pendiente</option>
-              </select>
+              <input type='date' name='finishDate' placeholder='Fecha de finalización' />
             </div>
 
             <div>
-              <button type='submit' name='btn' id='btn_enviar'>Enviar</button>
+              <button type='submit' name='btn' id='btn_enviar'>Agregar</button>
             </div>
           </div>
         </div>

@@ -18,7 +18,8 @@ export const Home = () => {
       })
     })
       .then((data) => {
-        dispatch({ type: 'LOGIN_USER', payload: data.user })
+        console.log(data)
+        dispatch({ type: 'SIGNUP_USER', payload: data.user })
         navigate('/todo')
       })
   }

@@ -10,11 +10,17 @@ export const icono2 = () => {
   return <IconTrash />
 }
 
+/* const { todosCount, pendingTodosCount } = useTodo() */
+
 export const ToDo = () => {
   return (
     <main className='table'>
       <section className='table__header'>
         <h1>Gestión de tareas</h1>
+        <div className='counter_todo'>
+          <h4>Pendientes: </h4>
+          <h4>N° de tareas: </h4>
+        </div>
         <div>
           <Link to='/toDos'><button type='submit' className='btn_plus'>+</button></Link>
         </div>
