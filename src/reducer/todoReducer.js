@@ -5,6 +5,12 @@ export const initialState = {
 
 export const todoReducer = (state, action) => {
   switch (action.type) {
+    case 'LOGIN_USER':
+      globalThis.localStorage.setItem('USER', JSON.stringify(action.payload))
+      return { ...state, user: action.payload }
+    case 'SIGNUP_USER':
+      globalThis.localStorage.setItem('SIGNUP', JSON.stringify(action.payload))
+      return { ...state, userid: action.payload }
     case 'ADD_TODO':
       return [...state, action.payload]
 
