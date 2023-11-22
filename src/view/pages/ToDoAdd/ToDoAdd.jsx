@@ -9,6 +9,7 @@ export const icono = () => {
 
 export const ToDoAdd = () => {
   const { dispatch, state } = useContext(TaskContext)
+  console.log(state)
 
   const onFormSubmit = (event) => {
     event.preventDefault()
