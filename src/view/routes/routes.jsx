@@ -19,12 +19,12 @@ export const router = createBrowserRouter([
     Component: Layout,
     children: [
       {
-        path: 'toDoAdd',
-        Component: ToDoAdd
-      },
-      {
         path: 'toDo',
         Component: ToDo
+      },
+      {
+        path: 'toDoAdd',
+        Component: ToDoAdd
       }
     ]
   }

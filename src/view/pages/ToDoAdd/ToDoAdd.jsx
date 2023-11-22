@@ -1,18 +1,27 @@
 import { IconArrowLeft } from '@tabler/icons-react'
 import './ToDoAdd.css'
-import { Link } from 'react-router-dom'
 
 export const icono = () => {
   return <IconArrowLeft />
 }
 
 export const ToDoAdd = () => {
-  /*  const { handleNewTodo } = useTodo() */
+  const onFormSubmit = (event) => {
+    event.preventDefault()
+    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/todo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: event.target.elements.name.value,
+        description: event.target.elements.description.value,
+        finishDate: event.target.elements.finishDate.value,
+        isCompleted: false,
+        userId: ''
+      })
+    })
+  }
   return (
-    <form>
-      <div>
-        <Link to='/todo'><IconArrowLeft color='black' size={46} /></Link>
-      </div>
+    <form onSubmit={onFormSubmit}>
       <div className='container'>
         <div className='form-info'>
           <div className='form-info-childs'>
@@ -21,16 +30,16 @@ export const ToDoAdd = () => {
             </div>
 
             <div>
-              <label htmlFor='d_e'>Nombre</label>
-              <input type='text' name='name' placeholder='Nombre' />
+              <label htmlFor='nombre'>Nombre</label>
+              <input id='nombre' type='text' name='name' placeholder='Nombre' />
             </div>
             <div>
               <label htmlFor='desc'>Descripción</label>
-              <input type='text' name='description' placeholder='Descripción' />
+              <input id='desc' type='text' name='description' placeholder='Descripción' />
             </div>
             <div>
-              <label htmlFor='d_e'>Fecha de finalización</label>
-              <input type='date' name='finishDate' placeholder='Fecha de finalización' />
+              <label htmlFor='f_f'>Fecha de finalización</label>
+              <input id='f_f' type='date' name='finishDate' placeholder='Fecha de finalización' />
             </div>
 
             <div>

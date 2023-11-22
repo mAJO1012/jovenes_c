@@ -1,21 +1,31 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import './Home.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { TaskContext } from '../components/context/tasks'
 
 export const Home = () => {
   const { dispatch } = useContext(TaskContext)
+  const { error, setError } = useState(null)
   const navigate = useNavigate()
 
   const handleLogin = (event) => {
     event.preventDefault()
-    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/user/auth', {
+    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/user/auth', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: event.target.elements.email.value,
         password: event.target.elements.password.value
       })
+    }).then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        window.alert(' Credenciales incorrectas ')
+        throw new Error('Credenciales incorrectas')
+      }
+    }).catch(error => {
+      setError(error)
     })
       .then((data) => {
         console.log(data)
@@ -50,6 +60,10 @@ export const Home = () => {
             <div>
               <button type='submit' name='btn' id='btn_enviar'>Enviar</button>
             </div>
+
+            {error && (
+              <p>{error}</p>
+            )}
           </div>
         </div>
       </div>

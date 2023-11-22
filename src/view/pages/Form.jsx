@@ -28,7 +28,7 @@ export function Form () {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
-    })
+    }).then((response) => response.json())
       .then((data) => {
         dispatch({ type: 'SIGNUP_USER', payload: data.user })
       })
