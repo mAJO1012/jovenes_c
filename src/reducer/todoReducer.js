@@ -1,14 +1,19 @@
-export const todoReducer = (initialState, action) => {
+export const initialState = {
+  tasks: [],
+  currentTask: null
+}
+
+export const todoReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return [...initialState, action.payload]
+      return [...state, action.payload]
 
     case 'DELETE_TODO':
-      return initialState.filter(todo => todo.userId !== action.payload)
+      return state.filter(todo => todo.userid !== action.payload)
 
     case 'COMPLETE_TODO':
-      return initialState.map(todo => {
-        if (todo.userId === action.payload) {
+      return state.map(todo => {
+        if (todo.userid === action.payload) {
           return {
             ...todo,
             completed: !todo.completed
@@ -18,8 +23,8 @@ export const todoReducer = (initialState, action) => {
       })
 
     case 'UPDATE_TODO':
-      return initialState.map(todo => {
-        if (todo.userId === action.payload.userId) {
+      return state.map(todo => {
+        if (todo.userid === action.payload.userid) {
           return {
             ...todo,
             description: action.payload.description
@@ -29,6 +34,6 @@ export const todoReducer = (initialState, action) => {
       })
 
     default:
-      return initialState
+      return state
   }
 }

@@ -1,11 +1,15 @@
 import { IconArrowLeft } from '@tabler/icons-react'
 import './ToDoAdd.css'
+import { useContext } from 'react'
+import { TaskContext } from '../../components/context/tasks'
 
 export const icono = () => {
   return <IconArrowLeft />
 }
 
 export const ToDoAdd = () => {
+  const { dispatch, state } = useContext(TaskContext)
+
   const onFormSubmit = (event) => {
     event.preventDefault()
     fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/todo', {
@@ -16,8 +20,11 @@ export const ToDoAdd = () => {
         description: event.target.elements.description.value,
         finishDate: event.target.elements.finishDate.value,
         isCompleted: false,
-        userId: ''
+        userId: state.user._id
       })
+    }).then((data) => {
+      console.log(data)
+      dispatch({ type: 'SIGNUP_USER', payload: data.user })
     })
   }
   return (

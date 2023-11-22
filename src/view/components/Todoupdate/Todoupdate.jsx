@@ -1,6 +1,24 @@
 import { IconEdit } from '@tabler/icons-react'
 
-export const Todoupdate = ({ todo, handleUpdateTodo }) => {
+export const Todoupdate = () => {
+/* const { state, dispatch } = useContext(TaskContext)
+  const onFormSubmit = (event) => {
+    event.preventDefault()
+    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/todo', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: event.target.elements.name.value,
+        description: event.target.elements.description.value,
+        finishDate: event.target.elements.finishDate.value,
+        isCompleted: false,
+        userId: state.user._id
+      })
+    }).then((data) => {
+      console.log(data)
+      dispatch({ type: 'UPDATE_TODO', payload: data.user })
+    })
+  } */
   return (
     <form>
       <div className='container'>
