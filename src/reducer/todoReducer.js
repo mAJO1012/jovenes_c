@@ -1,6 +1,5 @@
 export const initialState = {
-  tasks: [],
-  currentTask: null
+  user: null
 }
 
 export const todoReducer = (state, action) => {
