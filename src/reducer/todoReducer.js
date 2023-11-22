@@ -10,7 +10,7 @@ export const todoReducer = (state, action) => {
       return { ...state, user: action.payload }
     case 'SIGNUP_USER':
       globalThis.localStorage.setItem('SIGNUP', JSON.stringify(action.payload))
-      return { ...state, userid: action.payload }
+      return { ...state, user: action.payload }
     case 'ADD_TODO':
       return [...state, action.payload]
 
